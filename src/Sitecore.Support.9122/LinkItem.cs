@@ -38,7 +38,6 @@
             if (siteInfo != null)
             {
               urlOptions.Site = new SiteContext(siteInfo);
-              urlOptions.LanguageEmbedding = LanguageEmbedding.Never;
             }
             return LinkManager.GetItemUrl(this.TargetItem, urlOptions) + (string.IsNullOrEmpty(this.QueryString) ? "" : ("?" + this.QueryString));
           }
