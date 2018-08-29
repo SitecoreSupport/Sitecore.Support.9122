@@ -1,11 +1,12 @@
 ﻿namespace Sitecore.Support.XA.Foundation.Multisite.LinkManagers
 {
+  using Microsoft.Extensions.DependencyInjection;
   using Sitecore.Data.Fields;
   using Sitecore.Data.Items;
+  using Sitecore.DependencyInjection;
   using Sitecore.Links;
   using Sitecore.Sites;
   using Sitecore.Web;
-  using Sitecore.XA.Foundation.IoC;
   using Sitecore.XA.Foundation.Multisite;
   using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
 
@@ -33,7 +34,7 @@
           }
           if (this.IsInternal)
           {
-            SiteInfo siteInfo = ServiceLocator.Current.Resolve<ISiteInfoResolver>().GetSiteInfo(this.TargetItem);
+            SiteInfo siteInfo = ServiceLocator.ServiceProvider.GetService<ISiteInfoResolver>().GetSiteInfo(TargetItem);
             UrlOptions urlOptions = (UrlOptions)UrlOptions.DefaultOptions.Clone();
             if (siteInfo != null)
             {
